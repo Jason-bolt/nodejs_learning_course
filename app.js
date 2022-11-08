@@ -4,6 +4,8 @@ const morgan = require('morgan')
 const handlebars = require('express-handlebars')
 const connectDB = require('./config/db')
 
+// Route files
+const publicRoutes = require('./routes/public')
 
 // Load config
 dotenv.config({ path: './config/config.env' })
@@ -24,6 +26,9 @@ app.engine('.hbs', handlebars.engine({
     defaultLayout: 'main_template'
 }))
 app.set('view engine', '.hbs')
+
+// Routes
+app.use('/', publicRoutes)
 
 const PORT = process.env.PORT || 3000
 
