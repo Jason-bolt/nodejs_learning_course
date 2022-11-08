@@ -1,7 +1,6 @@
-// Server
 const express = require('express')
-// Library for config files
 const dotenv = require('dotenv')
+const morgan = require('morgan')
 const connectDB = require('./config/db')
 
 
@@ -12,6 +11,11 @@ connectDB()
 
 // Initializing app
 const app = express()
+
+// Running logging
+if (process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'))
+}
 
 const PORT = process.env.PORT || 3000
 
