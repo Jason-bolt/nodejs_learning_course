@@ -1,6 +1,7 @@
 const express = require('express')
 const dotenv = require('dotenv')
 const morgan = require('morgan')
+const handlebars = require('express-handlebars')
 const connectDB = require('./config/db')
 
 
@@ -16,6 +17,13 @@ const app = express()
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
 }
+
+// Handlebars
+app.engine('.hbs', handlebars.engine({
+    extname: '.hbs',
+    defaultLayout: 'main'
+}))
+app.set('view engine', '.hbs')
 
 const PORT = process.env.PORT || 3000
 
