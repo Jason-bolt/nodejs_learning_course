@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === 'development') {
 // Handlebars
 app.engine('.hbs', handlebars.engine({
     extname: '.hbs',
-    defaultLayout: 'main'
+    defaultLayout: 'main_template'
 }))
 app.set('view engine', '.hbs')
 
