@@ -27,7 +27,7 @@ module.exports = (passport) => {
                 done(null, user)
             }
         } catch (error) {
-            
+            console.error(error)
         }
     }))
 
