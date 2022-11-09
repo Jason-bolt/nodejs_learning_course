@@ -10,11 +10,20 @@
 
     <link rel="stylesheet" href="/css/style.css">
     <title>StoryBooks</title>
-<body class="container">
-    {{{body}}}
+
+</head>
+<body>
+    
+    {{> _header}}
+    <div class="container">
+        {{{body}}}
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     
-</head>
+    <script>
+        M.Sidenav.init(document.querySelector('.sidenav'))
+    </script>
+
 </body>
 </html>
