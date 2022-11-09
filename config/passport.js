@@ -8,7 +8,7 @@ module.exports = function (passport) {
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         callbackURL: "/auth/google/callback"
     },
-    function (request, accessToken, refreshToken, profile, done) {
+    function (request, accessToken, refreshToken, profile, cb) {
         console.log(profile)
     }))
 

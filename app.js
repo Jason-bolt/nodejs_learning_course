@@ -9,6 +9,7 @@ const connectDB = require('./config/db')
 
 // Route files
 const publicRoutes = require('./routes/public')
+const authRoutes = require('./routes/auth')
 
 // Load config
 dotenv.config({ path: './config/config.env' })
@@ -50,6 +51,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 // Routes
 app.use('/', publicRoutes)
+app.use('/auth', authRoutes)
 
 const PORT = process.env.PORT || 3000
 
