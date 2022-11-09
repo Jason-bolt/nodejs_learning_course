@@ -3,6 +3,8 @@ const express = require('express')
 const dotenv = require('dotenv')
 const morgan = require('morgan')
 const handlebars = require('express-handlebars')
+const passport = require('passport')
+const session = require('express-session')
 const connectDB = require('./config/db')
 
 // Route files
@@ -10,6 +12,9 @@ const publicRoutes = require('./routes/public')
 
 // Load config
 dotenv.config({ path: './config/config.env' })
+
+// Passport config
+require('./config/passport')(passport)
 
 connectDB()
 
@@ -27,6 +32,18 @@ app.engine('.hbs', handlebars.engine({
     defaultLayout: 'main_template'
 }))
 app.set('view engine', '.hbs')
+
+// Session middleware
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+    // store: new SQLiteStore({ db: 'sessions.db', dir: './var/db' })
+  }));
+
+// Passport middleware
+app.use(passport.initialize())
+app.use(passport.session())
 
 // Static folder
 app.use(express.static(path.join(__dirname, 'public')))
