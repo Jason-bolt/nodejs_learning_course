@@ -33,7 +33,7 @@ module.exports = (passport) => {
 
     passport.serializeUser( (user, done) => {
         process.nextTick(() => {
-          done(null, { id: user.id, username: user.username, name: user.name });
+          done(null, user);
         });
       });
       
