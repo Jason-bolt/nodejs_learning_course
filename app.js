@@ -5,7 +5,9 @@ const morgan = require('morgan')
 const handlebars = require('express-handlebars')
 const passport = require('passport')
 const session = require('express-session')
+const MongoStore = require('connect-mongo')
 const connectDB = require('./config/db')
+const { default: mongoose } = require('mongoose')
 
 // Route files
 const publicRoutes = require('./routes/public')
@@ -39,7 +41,7 @@ app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: false,
-    // store: new SQLiteStore({ db: 'sessions.db', dir: './var/db' })
+    store: MongoStore.create({ mongoUrl: process.env.MONGO_URI })
   }));
 
 // Passport middleware
