@@ -12,6 +12,7 @@ const { default: mongoose } = require('mongoose')
 // Route files
 const publicRoutes = require('./routes/public')
 const authRoutes = require('./routes/auth')
+const storyRoutes = require('./routes/stories')
 
 // Load config
 dotenv.config({ path: './config/config.env' })
@@ -54,6 +55,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 // Routes
 app.use('/', publicRoutes)
 app.use('/auth', authRoutes)
+app.use('/stories', storyRoutes)
 
 const PORT = process.env.PORT || 3000
 
