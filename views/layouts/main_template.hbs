@@ -21,10 +21,18 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor5/35.3.0/ckeditor.min.js" integrity="sha512-2CGV8N9CPC0ofyBG+VoM/u3riWKB1Y+o/bXyNfpycTqM/rbf0tBJTB+E2vWxZxTJog5m2lziyKJ+pcjfC0Qabw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
     <script>
         M.Sidenav.init(document.querySelector('.sidenav'))
         M.FormSelect.init(document.querySelector('#status'))
+
+         ClassicEditor
+        .create( document.querySelector( '#body' ) )
+        .catch( error => {
+            console.error( error );
+        } );
     </script>
 
 </body>
